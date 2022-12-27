@@ -1,8 +1,12 @@
 package hafta1;
 
+import java.util.Scanner;
+
 public class ATM {
+
     public static void main(String[] args) {
-        int bakiye = 8500;
+        Scanner inp = new Scanner(System.in);
+        int bakiye = 1500;
 
         System.out.println("Bakiyeniz = " + bakiye);
         System.out.println("1-Para yatırma\n" +
@@ -11,29 +15,34 @@ public class ATM {
                 "4-Çıkış Yap");
 
         System.out.print("\nİsleminizi Seciniz: ");
+        int islem = inp.nextInt();
+
         switch(islem) {
-            1:
-            System.out.println("Bakiyeniz = " + bakiye);
-            System.out.print("Çekmek istediğiniz tutarı giriniz: ");
-            int tutar = inp.nextInt();
-            if(tutar > bakiye) {
-                System.out.print("Yetersiz bakiye ! Tekrar giriniz: ");
+            case 1:
+                System.out.println("Bakiyeniz = " + bakiye);
+                System.out.print("Çekmek istediğiniz tutarı giriniz: ");
+                int tutar = inp.nextInt();
+                if(tutar > bakiye) {
+                    System.out.print("Yetersiz bakiye. Tekrar giriniz: ");
+                    tutar = inp.nextInt();
+                }
+                bakiye -= tutar;
+                System.out.println("Yeni bakiyeniz = " + bakiye);
+                break;
+            case 2:
+                System.out.println("Bakiyeniz = " + bakiye);
+                System.out.print("Yatırmak istediğiniz tutarı giriniz: ");
                 tutar = inp.nextInt();
-            }
-            bakiye -= tutar;
-            System.out.println("Yeni bakiyeniz = " + bakiye);
-            break;
-            2:
-            System.out.println("Bakiyeniz = " + bakiye);
-            System.out.print("Yatırmak istediğiniz tutarı giriniz: ");
-            tutar = inp.nextInt();
-            bakiye += tutar;
-            System.out.println("Yeni bakiyeniz = " + bakiye);
-            break;
-            3:
-            System.out.println("Bakiyeniz = " + bakiye);
-            break;
-
-    }
-
-    }
+                bakiye += tutar;
+                System.out.println("Yeni bakiyeniz = " + bakiye);
+                break;
+            case 3:
+                System.out.println("Bakiyeniz = " + bakiye);
+                break;
+            case 4:
+                System.out.println("Kartınızı almayı unutmayınız.!!");
+                break;
+            default:
+                System.out.println("Yanlıs islem secitiniz. Tekrar giriniz.");
+        } }
+}
